@@ -1,22 +1,23 @@
 "use client"
 
-import { useAuth } from "@/lib/auth-context"
+import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
-import { Dashboard } from "@/components/dashboard"
+import { DashboardReal } from "@/components/dashboard-real"
 import { Skeleton } from "@/components/ui/skeleton"
 
 export default function HomePage() {
-  const { user, loading } = useAuth()
+  const { data: session, status } = useSession()
   const router = useRouter()
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (status === "loading") return
+    if (!session) {
       router.push("/login")
     }
-  }, [user, loading, router])
+  }, [session, status, router])
 
-  if (loading) {
+  if (status === "loading") {
     return (
       <div className="flex h-screen">
         <div className="w-64 border-r bg-gray-50">
@@ -41,9 +42,9 @@ export default function HomePage() {
     )
   }
 
-  if (!user) {
+  if (!session) {
     return null
   }
 
-  return <Dashboard />
+  return <DashboardReal />
 }
