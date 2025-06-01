@@ -7,8 +7,7 @@ import { DadosEscolaForm } from "./dados-escola-form"
 import { FuncionariosModule } from "./funcionarios-module"
 import { LogoUpload } from "./logo-upload"
 import { ConfiguracoesGerais } from "./configuracoes-gerais"
-import { TurmasModule } from "./turmas-module"
-import { School, Users, ImageIcon, Settings, GraduationCap } from "lucide-react"
+import { School, Users, ImageIcon, Settings } from "lucide-react"
 
 export function ConfiguracoesModule() {
   const [activeTab, setActiveTab] = useState("dados")
@@ -22,7 +21,7 @@ export function ConfiguracoesModule() {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="dados" className="flex items-center gap-2">
             <School className="h-4 w-4" />
             Dados da Escola
@@ -30,10 +29,6 @@ export function ConfiguracoesModule() {
           <TabsTrigger value="funcionarios" className="flex items-center gap-2">
             <Users className="h-4 w-4" />
             Funcionários
-          </TabsTrigger>
-          <TabsTrigger value="turmas" className="flex items-center gap-2">
-            <GraduationCap className="h-4 w-4" />
-            Turmas
           </TabsTrigger>
           <TabsTrigger value="logo" className="flex items-center gap-2">
             <ImageIcon className="h-4 w-4" />
@@ -65,18 +60,6 @@ export function ConfiguracoesModule() {
             </CardHeader>
             <CardContent>
               <FuncionariosModule />
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="turmas" className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Gestão de Turmas</CardTitle>
-              <CardDescription>Cadastre e gerencie as turmas e a quantidade de estudantes por turno</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <TurmasModule />
             </CardContent>
           </Card>
         </TabsContent>

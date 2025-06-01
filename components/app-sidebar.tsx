@@ -177,25 +177,25 @@ export function AppSidebar() {
   }
 
   return (
-    <Sidebar className="bg-gradient-to-b from-blue-600 to-blue-800 border-r-0">
-      <SidebarHeader className="bg-blue-700">
+    <Sidebar>
+      <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-2">
-          <ChefHat className="h-8 w-8 text-yellow-400" />
+          <ChefHat className="h-8 w-8 text-primary" />
           <div>
-            <h2 className="text-lg font-semibold text-white">Refeições SaaS</h2>
-            <p className="text-sm text-blue-200">{getTenantName(user?.tenantId || null)}</p>
+            <h2 className="text-lg font-semibold">Refeições SaaS</h2>
+            <p className="text-sm text-muted-foreground">{getTenantName(user?.tenantId || null)}</p>
           </div>
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="bg-gradient-to-b from-blue-600 to-blue-800">
+      <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-blue-200">Menu Principal</SidebarGroupLabel>
+          <SidebarGroupLabel>Menu Principal</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {filteredMenuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="text-white hover:bg-blue-500 hover:text-yellow-400">
+                  <SidebarMenuButton asChild>
                     <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
@@ -209,12 +209,12 @@ export function AppSidebar() {
 
         {filteredPnaeItems.length > 0 && (
           <SidebarGroup>
-            <SidebarGroupLabel className="text-blue-200">PNAE</SidebarGroupLabel>
+            <SidebarGroupLabel>PNAE</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {filteredPnaeItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild className="text-white hover:bg-blue-500 hover:text-yellow-400">
+                    <SidebarMenuButton asChild>
                       <Link href={item.url}>
                         <item.icon />
                         <span>{item.title}</span>
@@ -229,12 +229,12 @@ export function AppSidebar() {
 
         {filteredAdminItems.length > 0 && (
           <SidebarGroup>
-            <SidebarGroupLabel className="text-blue-200">Administração</SidebarGroupLabel>
+            <SidebarGroupLabel>Administração</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {filteredAdminItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild className="text-white hover:bg-blue-500 hover:text-yellow-400">
+                    <SidebarMenuButton asChild>
                       <Link href={item.url}>
                         <item.icon />
                         <span>{item.title}</span>
@@ -249,12 +249,12 @@ export function AppSidebar() {
 
         {filteredSuperAdminItems.length > 0 && (
           <SidebarGroup>
-            <SidebarGroupLabel className="text-blue-200">Super Admin</SidebarGroupLabel>
+            <SidebarGroupLabel>Super Admin</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {filteredSuperAdminItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild className="text-white hover:bg-blue-500 hover:text-yellow-400">
+                    <SidebarMenuButton asChild>
                       <Link href={item.url}>
                         <item.icon />
                         <span>{item.title}</span>
@@ -268,14 +268,14 @@ export function AppSidebar() {
         )}
       </SidebarContent>
 
-      <SidebarFooter className="bg-blue-800">
+      <SidebarFooter>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="w-full justify-start p-2 text-white hover:bg-blue-700">
+            <Button variant="ghost" className="w-full justify-start p-2">
               <div className="flex items-center gap-2">
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="/placeholder.svg" />
-                  <AvatarFallback className="bg-yellow-400 text-blue-800">
+                  <AvatarFallback>
                     {user?.name
                       ?.split(" ")
                       .map((n) => n[0])
@@ -283,8 +283,8 @@ export function AppSidebar() {
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0 text-left">
-                  <p className="text-sm font-medium truncate text-white">{user?.name}</p>
-                  <p className="text-xs text-blue-200 truncate capitalize">{user?.role?.replace("_", " ")}</p>
+                  <p className="text-sm font-medium truncate">{user?.name}</p>
+                  <p className="text-xs text-muted-foreground truncate capitalize">{user?.role?.replace("_", " ")}</p>
                 </div>
               </div>
             </Button>
