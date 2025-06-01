@@ -44,19 +44,49 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      })
+      // Simular delay de rede
+      await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      if (response.ok) {
-        const data = await response.json()
-        setUser(data.user)
+      // Usuários válidos para o preview
+      const validUsers = [
+        {
+          email: "superadmin@sistema.com",
+          password: "123456",
+          name: "Super Administrador",
+          role: "super_admin",
+          tenantId: null,
+        },
+        { email: "admin@escola1.com", password: "123456", name: "Admin Escola", role: "admin", tenantId: "escola1" },
+        {
+          email: "nutricionista@escola1.com",
+          password: "123456",
+          name: "Maria Silva",
+          role: "nutricionista",
+          tenantId: "escola1",
+        },
+        {
+          email: "estoquista@escola1.com",
+          password: "123456",
+          name: "João Santos",
+          role: "estoquista",
+          tenantId: "escola1",
+        },
+        { email: "servidor@escola1.com", password: "123456", name: "Ana Costa", role: "servidor", tenantId: "escola1" },
+      ]
+
+      const user = validUsers.find((u) => u.email === email && u.password === password)
+
+      if (user) {
+        setUser({
+          id: Math.random().toString(),
+          email: user.email,
+          name: user.name,
+          role: user.role,
+          tenantId: user.tenantId,
+        })
         return true
       }
+
       return false
     } catch (error) {
       console.error("Login error:", error)

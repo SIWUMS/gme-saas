@@ -132,7 +132,12 @@ export default function LoginPage() {
 
             <div className="bg-blue-50 p-4 rounded-lg">
               <p className="text-sm text-blue-800">
-                <strong>Senha padrão:</strong> 123456 para todos os usuários
+                <strong>Credenciais válidas:</strong>
+                <br />• superadmin@sistema.com / 123456
+                <br />• admin@escola1.com / 123456
+                <br />• nutricionista@escola1.com / 123456
+                <br />• estoquista@escola1.com / 123456
+                <br />• servidor@escola1.com / 123456
               </p>
             </div>
           </div>
