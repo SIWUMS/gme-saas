@@ -43,7 +43,7 @@ O Sistema de Refeições Escolares foi desenvolvido especificamente para a **Esc
   - PostgreSQL 16 / Neon (PostgreSQL serverless)
 
 - **Infraestrutura**:
-  - Ubuntu 24.04 LTS
+  - Ubuntu 22.04 LTS
   - Nginx (configurado para gestor.emmvmfc.com.br)
   - PM2 (gerenciamento de processos)
   - Let's Encrypt (SSL automático)
