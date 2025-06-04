@@ -1,16 +1,14 @@
 # Sistema de Refeições Escolares - EMMVMFC
 
-![Sistema de Refeições Escolares](https://via.placeholder.com/800x400/2563eb/ffffff?text=Sistema+de+Refeições+Escolares+-+EMMVMFC)
-
 ## 📋 Sobre o Sistema
 
-O Sistema de Refeições Escolares foi desenvolvido especificamente para a **Escola Municipal Manoel Vieira de Melo Filho Canguaretama (EMMVMFC)**, oferecendo uma plataforma completa para gestão de alimentação escolar. O sistema permite o gerenciamento eficiente de cardápios, estoque de alimentos, controle nutricional, custos e conformidade com o Programa Nacional de Alimentação Escolar (PNAE).
+O Sistema de Refeições Escolares foi desenvolvido especificamente para a **Escola Municipal Militarizada de Vicentinópolis Manoel Fernandes da Cunha (EMMVMFC)**, oferecendo uma plataforma completa para gestão de alimentação escolar. O sistema permite o gerenciamento eficiente de cardápios, estoque de alimentos, controle nutricional, custos e conformidade com o Programa Nacional de Alimentação Escolar (PNAE).
 
 ### 🏫 Configuração EMMVMFC
 
 - **Domínio**: [gestor.emmvmfc.com.br](https://gestor.emmvmfc.com.br)
-- **Organização**: Escola Municipal Manoel Vieira de Melo Filho Canguaretama
-- **Localização**: Canguaretama, RN
+- **Organização**: Escola Municipal Militarizada de Vicentinópolis Manoel Fernandes da Cunha
+- **Localização**: Vicentinópolis, GO
 - **Tema**: Azul e Branco (primário) / Amarelo (secundário)
 
 ### 🚀 Principais Funcionalidades
@@ -60,7 +58,7 @@ O Sistema de Refeições Escolares foi desenvolvido especificamente para a **Esc
 
 ## 📦 Requisitos de Sistema
 
-- Ubuntu 24.04 LTS (recomendado)
+- Ubuntu 22.04 LTS (recomendado)
 - 6 vCPU Cores (mínimo 2)
 - 12 GB RAM (mínimo 4GB)
 - 20 GB de espaço em disco (mínimo)
@@ -72,14 +70,14 @@ O Sistema de Refeições Escolares foi desenvolvido especificamente para a **Esc
 ### Pré-requisitos
 
 1. **Configurar DNS**: Certifique-se de que o domínio `gestor.emmvmfc.com.br` está apontando para o IP do seu servidor
-2. **Acesso SSH**: Tenha acesso SSH ao servidor Ubuntu 24.04
+2. **Acesso SSH**: Tenha acesso SSH ao servidor Ubuntu 22.04
 3. **Usuário sudo**: Use um usuário com privilégios sudo (não root)
 
 ### Instalação Automatizada
 
 1. **Baixe o script de instalação**:
    \`\`\`bash
-   wget https://raw.githubusercontent.com/SIWUMS/gme-saas/main/install.sh
+   wget https://raw.githubusercontent.com/SIWUMS/gme-saas/main/(INSTALADOR).sh
    \`\`\`
 
 2. **Torne o script executável**:
@@ -94,7 +92,7 @@ O Sistema de Refeições Escolares foi desenvolvido especificamente para a **Esc
 
 4. **Siga as instruções**:
    - Digite o email do administrador
-   - Escolha entre PostgreSQL local ou Neon
+   - Escolha entre PostgreSQL local
    - Aguarde a instalação completa
 
 ### O que o instalador faz automaticamente:
@@ -197,20 +195,248 @@ O sistema implementa:
 - Informações sobre licitações
 - Relatórios de agricultura familiar
 
-## 📁 Estrutura de Arquivos
+📁 ESTRUTURA DO SISTEMA EMMVMFC
+===============================
 
-\`\`\`
 /var/www/sistema-refeicoes/
-├── app/                    # Aplicação Next.js
-├── components/             # Componentes React
-├── lib/                    # Bibliotecas e utilitários
-├── uploads/                # Arquivos enviados
-├── logs/                   # Logs da aplicação
-├── .env                    # Variáveis de ambiente
-├── update.sh               # Script de atualização
-├── maintenance.sh          # Script de manutenção
-└── EMMVMFC_INFO.txt       # Informações do sistema
-\`\`\`
+├── 📁 app/                                    # Aplicação Next.js 15
+│   ├── 📁 (dashboard)/                        # Rotas do dashboard
+│   │   ├── 📄 page.tsx                        # Dashboard principal
+│   │   └── 📄 loading.tsx                     # Loading do dashboard
+│   ├── 📁 cardapios/                          # Gestão de cardápios
+│   │   ├── 📄 page.tsx                        # Lista de cardápios
+│   │   ├── 📄 novo/page.tsx                   # Criar cardápio
+│   │   └── 📄 [id]/page.tsx                   # Editar cardápio
+│   ├── 📁 estoque/                            # Controle de estoque
+│   │   ├── 📄 page.tsx                        # Gestão de estoque
+│   │   └── 📁 movimentacao/                   # Movimentações
+│   ├── 📁 alimentos/                          # Cadastro de alimentos
+│   │   ├── 📄 page.tsx                        # Lista de alimentos
+│   │   └── 📄 [id]/page.tsx                   # Detalhes do alimento
+│   ├── 📁 turmas/                             # Gestão de turmas
+│   │   ├── 📄 page.tsx                        # Lista de turmas
+│   │   └── 📄 nova/page.tsx                   # Criar turma
+│   ├── 📁 pnae/                               # Módulo PNAE
+│   │   ├── 📄 page.tsx                        # Dashboard PNAE
+│   │   ├── 📁 distribuicao/                   # Distribuição de recursos
+│   │   ├── 📁 compras/                        # Gestão de compras
+│   │   ├── 📁 licitacoes/                     # Licitações
+│   │   ├── 📁 prestacao-contas/               # Prestação de contas
+│   │   ├── 📁 agricultura-familiar/           # Agricultura familiar
+│   │   └── 📁 transparencia/                  # Portal público
+│   ├── 📁 custos/                             # Análise de custos
+│   │   ├── 📄 page.tsx                        # Dashboard de custos
+│   │   ├── 📁 preparacoes/                    # Custo por preparação
+│   │   └── 📁 relatorios/                     # Relatórios financeiros
+│   ├── 📁 relatorios/                         # Relatórios gerais
+│   │   ├── 📄 page.tsx                        # Lista de relatórios
+│   │   ├── 📁 consumo/                        # Relatórios de consumo
+│   │   ├── 📁 nutricional/                    # Relatórios nutricionais
+│   │   └── 📁 financeiro/                     # Relatórios financeiros
+│   ├── 📁 usuarios/                           # Gestão de usuários
+│   │   ├── 📄 page.tsx                        # Lista de usuários
+│   │   └── 📄 novo/page.tsx                   # Criar usuário
+│   ├── 📁 configuracoes/                      # Configurações da escola
+│   │   ├── 📄 page.tsx                        # Configurações gerais
+│   │   ├── 📁 escola/                         # Dados da escola
+│   │   ├── 📁 funcionarios/                   # Gestão de funcionários
+│   │   └── 📁 sistema/                        # Configurações do sistema
+│   ├── 📁 perfil/                             # Perfil do usuário
+│   │   └── 📄 page.tsx                        # Editar perfil
+│   ├── 📁 api/                                # API Routes Next.js
+│   │   ├── 📁 auth/                           # Autenticação
+│   │   │   ├── 📄 [...nextauth]/route.ts      # NextAuth.js
+│   │   │   ├── 📄 login/route.ts              # Login
+│   │   │   └── 📄 logout/route.ts             # Logout
+│   │   ├── 📁 dashboard/                      # APIs do dashboard
+│   │   │   └── 📄 stats/route.ts              # Estatísticas
+│   │   ├── 📁 cardapios/                      # APIs de cardápios
+│   │   │   ├── 📄 route.ts                    # CRUD cardápios
+│   │   │   └── 📄 [id]/route.ts               # Cardápio específico
+│   │   ├── 📁 estoque/                        # APIs de estoque
+│   │   │   ├── 📄 route.ts                    # CRUD estoque
+│   │   │   └── 📄 movimentacao/route.ts       # Movimentações
+│   │   ├── 📁 alimentos/                      # APIs de alimentos
+│   │   │   ├── 📄 route.ts                    # CRUD alimentos
+│   │   │   └── 📄 [id]/route.ts               # Alimento específico
+│   │   ├── 📁 turmas/                         # APIs de turmas
+│   │   ├── 📁 pnae/                           # APIs PNAE
+│   │   ├── 📁 custos/                         # APIs de custos
+│   │   ├── 📁 relatorios/                     # APIs de relatórios
+│   │   ├── 📁 usuarios/                       # APIs de usuários
+│   │   └── 📁 upload/                         # Upload de arquivos
+│   ├── 📄 layout.tsx                          # Layout principal
+│   ├── 📄 page.tsx                            # Página inicial
+│   ├── 📄 loading.tsx                         # Loading global
+│   ├── 📄 error.tsx                           # Página de erro
+│   └── 📄 not-found.tsx                       # Página 404
+│
+├── 📁 components/                             # Componentes React
+│   ├── 📁 ui/                                 # Componentes base (shadcn/ui)
+│   │   ├── 📄 button.tsx                      # Botão
+│   │   ├── 📄 card.tsx                        # Card
+│   │   ├── 📄 input.tsx                       # Input
+│   │   ├── 📄 select.tsx                      # Select
+│   │   ├── 📄 table.tsx                       # Tabela
+│   │   ├── 📄 dialog.tsx                      # Modal
+│   │   ├── 📄 toast.tsx                       # Notificações
+│   │   └── 📄 ...                             # Outros componentes UI
+│   ├── 📁 dashboard/                          # Componentes do dashboard
+│   │   ├── 📄 stats-cards.tsx                 # Cards de estatísticas
+│   │   ├── 📄 charts.tsx                      # Gráficos
+│   │   └── 📄 recent-activity.tsx             # Atividades recentes
+│   ├── 📁 cardapios/                          # Componentes de cardápios
+│   │   ├── 📄 cardapio-form.tsx               # Formulário de cardápio
+│   │   ├── 📄 ficha-tecnica.tsx               # Ficha técnica
+│   │   ├── 📄 base-taco.tsx                   # Integração TACO
+│   │   └── 📄 cardapio-list.tsx               # Lista de cardápios
+│   ├── 📁 estoque/                            # Componentes de estoque
+│   │   ├── 📄 estoque-form.tsx                # Formulário de estoque
+│   │   ├── 📄 movimentacao-form.tsx           # Movimentações
+│   │   └── 📄 estoque-alerts.tsx              # Alertas de estoque
+│   ├── 📁 alimentos/                          # Componentes de alimentos
+│   │   ├── 📄 alimento-form.tsx               # Formulário de alimento
+│   │   ├── 📄 alimentos-list.tsx              # Lista de alimentos
+│   │   └── 📄 nutricional-info.tsx            # Info nutricional
+│   ├── 📁 turmas/                             # Componentes de turmas
+│   │   ├── 📄 turma-form.tsx                  # Formulário de turma
+│   │   └── 📄 turmas-list.tsx                 # Lista de turmas
+│   ├── 📁 pnae/                               # Componentes PNAE
+│   │   ├── 📄 distribuicao-recursos.tsx       # Distribuição
+│   │   ├── 📄 compras-module.tsx              # Compras
+│   │   ├── 📄 licitacoes-module.tsx           # Licitações
+│   │   ├── 📄 prestacao-contas.tsx            # Prestação de contas
+│   │   └── 📄 transparencia-portal.tsx        # Portal público
+│   ├── 📁 custos/                             # Componentes de custos
+│   │   ├── 📄 custo-preparacoes.tsx           # Custos por preparação
+│   │   ├── 📄 analise-comparativa.tsx         # Análise comparativa
+│   │   └── 📄 relatorio-financeiro.tsx        # Relatório financeiro
+│   ├── 📁 relatorios/                         # Componentes de relatórios
+│   │   ├── 📄 relatorio-generator.tsx         # Gerador de relatórios
+│   │   ├── 📄 charts-components.tsx           # Componentes de gráficos
+│   │   └── 📄 export-options.tsx              # Opções de exportação
+│   ├── 📁 usuarios/                           # Componentes de usuários
+│   │   ├── 📄 usuario-form.tsx                # Formulário de usuário
+│   │   └── 📄 usuarios-list.tsx               # Lista de usuários
+│   ├── 📁 configuracoes/                      # Componentes de configurações
+│   │   ├── 📄 dados-escola-form.tsx           # Dados da escola
+│   │   ├── 📄 funcionarios-module.tsx         # Funcionários
+│   │   └── 📄 configuracoes-gerais.tsx        # Configurações gerais
+│   ├── 📁 layout/                             # Componentes de layout
+│   │   ├── 📄 header.tsx                      # Cabeçalho
+│   │   ├── 📄 sidebar.tsx                     # Barra lateral
+│   │   ├── 📄 footer.tsx                      # Rodapé
+│   │   └── 📄 navigation.tsx                  # Navegação
+│   └── 📁 providers/                          # Providers React
+│       ├── 📄 auth-provider.tsx               # Provider de autenticação
+│       ├── 📄 theme-provider.tsx              # Provider de tema
+│       └── 📄 toast-provider.tsx              # Provider de notificações
+│
+├── 📁 lib/                                    # Bibliotecas e utilitários
+│   ├── 📄 database.ts                         # Conexão com PostgreSQL
+│   ├── 📄 auth.ts                             # Configuração NextAuth
+│   ├── 📄 utils.ts                            # Utilitários gerais
+│   ├── 📄 validations.ts                      # Validações Zod
+│   ├── 📄 permissions.ts                      # Sistema de permissões
+│   ├── 📄 constants.ts                        # Constantes do sistema
+│   ├── 📄 formatters.ts                       # Formatadores
+│   └── 📄 api-client.ts                       # Cliente da API
+│
+├── 📁 database/                               # Scripts de banco de dados
+│   ├── 📄 schema.sql                          # Esquema completo
+│   ├── 📄 seed-data.sql                       # Dados iniciais
+│   ├── 📄 migrations/                         # Migrações
+│   │   ├── 📄 001_initial_schema.sql          # Migração inicial
+│   │   ├── 📄 002_add_pnae_tables.sql         # Tabelas PNAE
+│   │   └── 📄 003_add_custos_tables.sql       # Tabelas de custos
+│   └── 📄 procedures/                         # Stored procedures
+│       ├── 📄 calculate_costs.sql             # Cálculo de custos
+│       └── 📄 generate_reports.sql            # Geração de relatórios
+│
+├── 📁 hooks/                                  # Custom React Hooks
+│   ├── 📄 use-auth.ts                         # Hook de autenticação
+│   ├── 📄 use-api.ts                          # Hook para API
+│   ├── 📄 use-toast.ts                        # Hook de notificações
+│   └── 📄 use-permissions.ts                  # Hook de permissões
+│
+├── 📁 public/                                 # Arquivos públicos
+│   ├── 📄 favicon.ico                         # Favicon EMMVMFC
+│   ├── 📄 logo-emmvmfc.png                    # Logo da escola
+│   ├── 📄 robots.txt                          # SEO
+│   ├── 📄 sitemap.xml                         # Sitemap
+│   └── 📁 images/                             # Imagens do sistema
+│       ├── 📄 dashboard-bg.jpg                # Background dashboard
+│       ├── 📄 login-bg.jpg                    # Background login
+│       └── 📄 emmvmfc-banner.png              # Banner da escola
+│
+├── 📁 scripts/                                # Scripts de manutenção
+│   ├── 📄 backup.sh                           # Script de backup
+│   ├── 📄 restore.sh                          # Script de restore
+│   ├── 📄 update.sh                           # Script de atualização
+│   ├── 📄 maintenance.sh                      # Manutenção do sistema
+│   └── 📄 populate-database.sh                # Popular banco de dados
+│
+├── 📁 styles/                                 # Estilos CSS
+│   ├── 📄 globals.css                         # Estilos globais
+│   ├── 📄 emmvmfc-theme.css                   # Tema EMMVMFC
+│   └── 📄 components.css                      # Estilos de componentes
+│
+├── 📁 uploads/                                # Arquivos enviados (criado em runtime)
+│   ├── 📁 documentos/                         # Documentos PNAE
+│   ├── 📁 imagens/                            # Imagens de alimentos
+│   └── 📁 relatorios/                         # Relatórios gerados
+│
+├── 📁 logs/                                   # Logs da aplicação (criado em runtime)
+│   ├── 📄 application.log                     # Log da aplicação
+│   ├── 📄 error.log                           # Log de erros
+│   └── 📄 access.log                          # Log de acesso
+│
+├── 📁 .next/                                  # Build Next.js (criado após npm run build)
+│   ├── 📁 static/                             # Arquivos estáticos
+│   ├── 📁 server/                             # Código do servidor
+│   └── 📄 BUILD_ID                            # ID do build
+│
+├── 📁 node_modules/                           # Dependências npm (criado após npm install)
+│
+├── 📄 .env.local                              # Variáveis de ambiente EMMVMFC
+├── 📄 .gitignore                              # Arquivos ignorados pelo Git
+├── 📄 package.json                            # Dependências e scripts
+├── 📄 package-lock.json                       # Lock das dependências
+├── 📄 next.config.ts                          # Configuração Next.js
+├── 📄 tailwind.config.ts                      # Configuração Tailwind
+├── 📄 tsconfig.json                           # Configuração TypeScript
+├── 📄 eslint.config.mjs                       # Configuração ESLint
+├── 📄 postcss.config.mjs                      # Configuração PostCSS
+├── 📄 README.md                               # Documentação do projeto
+├── 📄 EMMVMFC_INFO.txt                        # Informações específicas EMMVMFC
+└── 📄 components.json                         # Configuração shadcn/ui
+
+📁 ARQUIVOS DE SISTEMA (fora do projeto)
+=======================================
+
+/etc/nginx/sites-available/
+└── 📄 sistema-refeicoes-emmvmfc               # Configuração Nginx EMMVMFC
+
+/etc/nginx/sites-enabled/
+└── 📄 sistema-refeicoes-emmvmfc               # Link simbólico
+
+/var/log/nginx/
+├── 📄 emmvmfc-sistema-access.log              # Log de acesso Nginx
+├── 📄 emmvmfc-sistema-error.log               # Log de erro Nginx
+└── 📄 emmvmfc-detailed.log                    # Log detalhado
+
+/opt/backups/sistema-refeicoes/
+├── 📄 backup-YYYY-MM-DD.sql                   # Backups diários
+└── 📄 backup-YYYY-MM-DD.tar.gz                # Backup completo
+
+/etc/letsencrypt/live/gestor.emmvmfc.com.br/
+├── 📄 fullchain.pem                           # Certificado SSL
+├── 📄 privkey.pem                             # Chave privada SSL
+└── 📄 cert.pem                                # Certificado
+
+~/.pm2/
+├── 📄 logs/                                   # Logs PM2
+└── 📄 pids/                                   # PIDs dos processos
 
 ## 🔧 Manutenção
 
@@ -247,7 +473,7 @@ tail -f /var/log/emmvmfc-backup.log
 
 Para suporte técnico:
 
-- **GitHub**: [Issues](https://github.com/SIWUMS/gme-saas/issues)
+- **GitHub**: [Issues](https://github.com/SIWUMS/gme-saas)
 - **Email**: suporte@emmvmfc.com.br
 - **Documentação**: Disponível no sistema após login
 
@@ -257,7 +483,7 @@ Este sistema é distribuído sob a licença MIT. Desenvolvido especificamente pa
 
 ---
 
-**Desenvolvido com ❤️ para a Escola Municipal Manoel Vieira de Melo Filho Canguaretama**
+**Desenvolvido por CB. Walison**
 
 *Sistema de Refeições Escolares - Melhorando a gestão da alimentação escolar em Canguaretama, RN*
 \`\`\`
